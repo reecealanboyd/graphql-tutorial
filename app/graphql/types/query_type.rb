@@ -14,7 +14,15 @@ module Types
       "Hello World!"
     end
 
-    field :all_links, [LinkType], null: false
+    field :test_field_with_arguments, String, null: false,
+          description: "An example field added by me actually!" do
+      argument :name, String, required: true
+    end
+    def test_field_with_arguments(name:)
+      "Hello #{name}!"
+    end
+
+    field :all_links, [LinkType], null: false, description: 'this will show in graphiql'
 
     # this method is invoked, when `all_link` fields is being resolved
     def all_links
