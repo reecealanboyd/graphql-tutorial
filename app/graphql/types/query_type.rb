@@ -19,7 +19,7 @@ module Types
       argument :name, String, required: true
     end
     def test_field_with_arguments(name:)
-      "Hello #{name}!"
+      "Hello #{name}! You sent this request at #{context[:time]}"
     end
 
     field :all_links, [LinkType], null: false, description: 'this will show in graphiql'
