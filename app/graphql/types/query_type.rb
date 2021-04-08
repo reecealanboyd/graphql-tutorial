@@ -24,9 +24,18 @@ module Types
 
     field :all_links, [LinkType], null: false, description: 'this will show in graphiql'
 
+    field :author, Types::AuthorType, null: true, description: "One author" do
+      argument :id, ID, required: true
+    end
+
+    def author(id:)
+      Author.where(id: id).first
+    end
+
     # this method is invoked, when `all_link` fields is being resolved
     def all_links
       Link.all
     end
+
   end
 end
